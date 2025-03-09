@@ -1,0 +1,285 @@
+/* Kawaii Calculator Styles */
+:root {
+    --primary-color: #ffb7c5; /* Soft pink */
+    --secondary-color: #ffd6e0; /* Lighter pink */
+    --accent-color: #ff85a1; /* Brighter pink */
+    --text-color: #5a5a5a; /* Soft gray */
+    --display-color: #fff8fa; /* Off-white */
+    --shadow-color: rgba(0, 0, 0, 0.1);
+    --button-radius: 12px;
+    --calculator-radius: 24px;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Quicksand', sans-serif;
+}
+
+body {
+    background-color: #f9f4f5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    overflow: hidden;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+.calculator {
+    background-color: var(--primary-color);
+    border-radius: var(--calculator-radius);
+    box-shadow: 
+        0 10px 20px var(--shadow-color),
+        0 6px 6px var(--shadow-color),
+        0 0 100px rgba(255, 183, 197, 0.2);
+    padding: 25px;
+    width: 320px;
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.calculator:hover {
+    transform: translateY(-5px);
+    box-shadow: 
+        0 15px 30px var(--shadow-color),
+        0 10px 10px var(--shadow-color),
+        0 0 120px rgba(255, 183, 197, 0.3);
+}
+
+/* Kawaii Face */
+.calculator-face {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 10;
+}
+
+.eyes {
+    position: absolute;
+    top: 45px;
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    padding: 0 80px;
+}
+
+.eye {
+    width: 12px;
+    height: 12px;
+    background-color: var(--text-color);
+    border-radius: 50%;
+    position: relative;
+}
+
+.eye::after {
+    content: '';
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    width: 4px;
+    height: 4px;
+    background-color: white;
+    border-radius: 50%;
+}
+
+.eye.left {
+    transform: translateX(-15px);
+}
+
+.eye.right {
+    transform: translateX(15px);
+}
+
+.blush {
+    position: absolute;
+    top: 55px;
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    padding: 0 60px;
+}
+
+.cheek {
+    width: 20px;
+    height: 10px;
+    background-color: rgba(255, 133, 161, 0.5);
+    border-radius: 50%;
+}
+
+.cheek.left {
+    transform: translateX(-25px);
+}
+
+.cheek.right {
+    transform: translateX(25px);
+}
+
+.mouth {
+    position: absolute;
+    top: 60px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 20px;
+    height: 10px;
+    border-bottom: 2px solid var(--text-color);
+    border-radius: 50%;
+}
+
+/* Calculator Display */
+.calculator-display {
+    background-color: var(--display-color);
+    border-radius: var(--button-radius);
+    margin-bottom: 20px;
+    padding: 15px;
+    text-align: right;
+    min-height: 80px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    box-shadow: inset 0 2px 5px var(--shadow-color);
+    position: relative;
+    z-index: 1;
+}
+
+.previous-operand {
+    color: rgba(90, 90, 90, 0.7);
+    font-size: 1rem;
+    min-height: 24px;
+}
+
+.current-operand {
+    color: var(--text-color);
+    font-size: 2rem;
+    font-weight: 500;
+    word-break: break-all;
+}
+
+/* Calculator Buttons */
+.calculator-buttons {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+}
+
+button {
+    border: none;
+    border-radius: var(--button-radius);
+    cursor: pointer;
+    font-size: 1.2rem;
+    height: 55px;
+    transition: all 0.2s ease;
+    background-color: var(--secondary-color);
+    color: var(--text-color);
+    font-weight: 500;
+    box-shadow: 0 4px 8px var(--shadow-color);
+    position: relative;
+    overflow: hidden;
+}
+
+button::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle, rgba(255,255,255,0.8) 0%, rgba(255,255,255,0) 70%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px var(--shadow-color);
+}
+
+button:hover::after {
+    opacity: 0.5;
+}
+
+button:active {
+    transform: translateY(1px);
+    box-shadow: 0 2px 4px var(--shadow-color);
+}
+
+.special-btn {
+    background-color: var(--secondary-color);
+}
+
+.operator {
+    background-color: #ffc8d6;
+}
+
+.equals {
+    background-color: var(--accent-color);
+    color: white;
+}
+
+.zero {
+    grid-column: span 2;
+}
+
+/* Animation for button press */
+@keyframes press {
+    0% { transform: scale(1); }
+    50% { transform: scale(0.95); }
+    100% { transform: scale(1); }
+}
+
+.pressed {
+    animation: press 0.2s ease;
+}
+
+/* Animation for calculator face */
+@keyframes blink {
+    0% { height: 12px; }
+    10% { height: 2px; }
+    20% { height: 12px; }
+}
+
+.calculator:hover .eye {
+    animation: blink 3s infinite;
+}
+
+/* Credit text */
+.credit {
+    color: var(--text-color);
+    font-size: 0.9rem;
+    opacity: 0.7;
+    text-align: center;
+    margin-top: 10px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 400px) {
+    .calculator {
+        width: 280px;
+        padding: 20px;
+    }
+    
+    button {
+        height: 50px;
+        font-size: 1rem;
+    }
+    
+    .calculator-display {
+        padding: 12px;
+        min-height: 70px;
+    }
+    
+    .current-operand {
+        font-size: 1.8rem;
+    }
+}
