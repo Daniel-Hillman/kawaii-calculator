@@ -2,6 +2,12 @@
 
 A cute and functional calculator web application with a kawaii (Japanese "cute") aesthetic. This calculator features a minimalist design with subtle animations and a delightful user experience.
 
+## 🌟 Live Demo
+
+Try the calculator right now: [Kawaii Calculator Live Demo](https://daniel-hillman.github.io/kawaii-calculator/)
+
+No installation required - just click the link above to start using the calculator in your browser!
+
 ## Features
 
 - ✨ Sleek, modern, and kawaii design
@@ -36,16 +42,24 @@ The calculator supports the following operations:
 - Clear: `Escape`
 - Delete: `Backspace`
 
+## Access Options
+
+1. **Online Demo (Recommended)**
+   - Visit [https://daniel-hillman.github.io/kawaii-calculator/](https://daniel-hillman.github.io/kawaii-calculator/)
+   - Works on any device with a web browser
+   - No installation required
+
+2. **Local Installation**
+   - Download the ZIP file from this repository
+   - Extract the files
+   - Open `index.html` in your browser
+
 ## Technical Details
 
 This project is built with:
 - HTML5
 - CSS3 (with animations and responsive design)
 - Vanilla JavaScript (no frameworks)
-
-## How to Run
-
-Simply open the `index.html` file in any modern web browser.
 
 ## Project Structure
 
